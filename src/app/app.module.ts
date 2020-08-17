@@ -1,18 +1,56 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { CartComponent } from './components/cart/cart.component';
+import { GoodsComponent } from './components/goods/goods.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'; 
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SignupComponent,
+    CartComponent,
+    GoodsComponent,
+    NotFoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCn_H2us8Fp2WhUz3aNfPxt19KCLBSAhaY",
+    authDomain: "market-gs.firebaseapp.com",
+    databaseURL: "https://market-gs.firebaseio.com",
+    projectId: "market-gs",
+    storageBucket: "market-gs.appspot.com",
+    messagingSenderId: "662380688659",
+    appId: "1:662380688659:web:730b72ffa690434e"
+    }),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: FirestoreSettingsToken, useValue: {}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
